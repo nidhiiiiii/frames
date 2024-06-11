@@ -12,7 +12,8 @@ export async function GET(request: Request) {
     const hasTitle = searchParams.has('title')
     const title = hasTitle
       ? searchParams.get('title')?.slice(0, 100)
-      : 'Default Title'
+      : ''
+      // : 'Default Title'
 
     // ?description=
     const hasDescription = searchParams.has('description')
