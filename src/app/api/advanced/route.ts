@@ -3,12 +3,16 @@ import { FrameRequest, getFrameHtmlResponse } from '@coinbase/onchainkit/frame';
 import { init, fetchQuery } from '@airstack/airstack-react';
 import { URLSearchParams } from 'url';
 
-init("105ae4794a7fb4d289523b341c4f90c38");
+const apiKey = process.env.AIRSTACK_API_KEY;
+if (!apiKey) {
+  throw new Error("Missing AIRSTACK_API_KEY environment variable");
+}
+init(apiKey);
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   const hashParams = req.nextUrl.searchParams;
   const hashh = hashParams.get('hash');
-  // console.log(`The request being obtained is:`, req);
+  console.log(`The request being obtained is:`, req);
   const body: FrameRequest = await req.json();                                            // 'req' is the incoming request from the client. It is parsed here into a FrameRequest object.
   // const urlParams = new URL(req.nextUrl);                                                     // Create a URL object from the request URL
   // const hashParams = new URLSearchParams(urlParams.search);                                               // Extract query parameters from the URL
