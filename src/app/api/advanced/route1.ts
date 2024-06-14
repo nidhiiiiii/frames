@@ -61,9 +61,9 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   };
 
   async function getCastHash(castHashQuery: string, variables: any) {
-    let parsed_fid
-    let hash
-    let Casttext
+    let parsed_fid;
+    let hash;
+    let Casttext;
     let { data, error } = await fetchQuery(castHashQuery, variables);
     if (data) {
       console.log(data.FarcasterCasts.Cast);
